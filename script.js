@@ -1,23 +1,20 @@
-let counter = 0;
+let count = 0;
+const value = document.querySelector("#value");
+const btns = document.querySelectorAll(".btn");
 
-function decrease(){
-    counter--;
-    console.log(counter)
-    document.getElementById("counter").innerHTML = String(counter);
-    return counter;
-};
-
-function zero(){
-    counter = 0;
-    console.log(counter);
-    document.getElementById("counter").innerHTML = String(counter);
-    return counter;
-};
-
-
-function increase(){
-    counter ++;
-    console.log(counter)
-    document.getElementById("counter").innerHTML = String(counter);
-    return counter;
-};
+btns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+    const styles = e.currentTarget.classList;
+    if(styles.contains('decrease')){
+        count--;
+        value.textContent = count;
+    } else if(styles.contains('reset')){
+        count = 0;
+        value.textContent = count;
+    } else {
+        count++;
+        value.textContent = count
+    }
+    
+});
+});
